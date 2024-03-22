@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="fr.isen.ounes.androiderestaurant">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Droid Restaurant"
@@ -12,7 +13,7 @@
         android:theme="@style/Theme.AndroidERestaurant"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true"
             android:label="DroidRestaurant"
             android:theme="@style/Theme.AndroidERestaurant">
@@ -22,6 +23,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true"
+            android:label="DroidRestaurant"
+            android:theme="@style/Theme.AndroidERestaurant"/>
+        <activity
+            android:name=".DetailActivity"
+            android:exported="true"
+            android:label="DroidRestaurant"
+            android:theme="@style/Theme.AndroidERestaurant"/>
     </application>
 
 </manifest>

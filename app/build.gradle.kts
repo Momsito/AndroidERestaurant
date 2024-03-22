@@ -48,6 +48,10 @@ android {
 
 dependencies {
 
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.5.0")
+    implementation("com.google.code.gson:gson:2.6.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -56,6 +60,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.volley)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
