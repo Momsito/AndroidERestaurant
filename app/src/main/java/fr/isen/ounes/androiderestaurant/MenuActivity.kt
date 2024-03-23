@@ -138,8 +138,8 @@ fun dishRow(dish: Dish) {
                     model = ImageRequest.Builder(LocalContext.current)
                         .data(dish.images.first())
                         .build(),
-                    placeholder = painterResource(R.drawable.ic_launcher_foreground),
-                    error = painterResource(R.drawable.ic_launcher_foreground),
+                    placeholder = painterResource(R.drawable.noimage),
+                    error = painterResource(R.drawable.noimage),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxSize()
