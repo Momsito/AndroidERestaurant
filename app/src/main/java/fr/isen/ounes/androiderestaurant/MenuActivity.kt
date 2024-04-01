@@ -117,7 +117,7 @@ fun dishRow(dish: Dish) {
             .fillMaxWidth()
             .clickable {
                 val intent = Intent(context, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.DISH_EXTRA_KEY, dish)
+                intent.putExtra(DetailActivity.dish_key, dish)
                 context.startActivity(intent)
             }
     ) {

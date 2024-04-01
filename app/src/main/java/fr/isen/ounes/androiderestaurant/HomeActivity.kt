@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -81,53 +82,93 @@ class HomeActivity : ComponentActivity(), MenuInterface {
 
 @Composable
 fun MenuView(menu: MenuInterface) {
-    Column(
-        Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text("Benvenuto chez", fontFamily =  mamamia, modifier = Modifier.padding(top = 25.dp), style = TextStyle(fontSize = 35.sp, fontStyle = FontStyle.Italic, color = Color.Red))
-        Image(painter = painterResource(id = R.drawable.icon), contentDescription = "Logo", modifier = Modifier.size(250.dp)
-        )
+    Scaffold ( containerColor = customBackgroundColor ){
         Column(
-            verticalArrangement = Arrangement.Center,
-
-            horizontalAlignment = Alignment.CenterHorizontally
-
+            Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box( modifier = Modifier
-                .padding(8.dp)
-                .size(width = 200.dp, height = 70.dp)
-                .background(color = Color.Red, RoundedCornerShape(25.dp))
-                .clip(RoundedCornerShape(25.dp)) // Coins arrondis
-                ) {
-                CustomButton(type = DishType.STARTER, menu)
-            }
-            Divider(color = divColor,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 40.dp), // Remplir toute la largeur avec un padding horizontal
-                thickness = 3.dp)  // Changement de la couleur du séparateur en rouge
-            Box( modifier = Modifier
-                .padding(8.dp)
-                .size(width = 200.dp, height = 70.dp)
-                .background(color = Color.Red, RoundedCornerShape(25.dp))
-                .clip(RoundedCornerShape(25.dp)) // Coins arrondis
-            ) {
-                CustomButton(type = DishType.MAIN, menu)
-            }
-            Divider(color = divColor,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 40.dp), // Remplir toute la largeur avec un padding horizontal
-                thickness = 3.dp) // Changement de la couleur du séparateur en rouge
-            Box(modifier = Modifier
-                .padding(8.dp)
-                .size(width = 200.dp, height = 70.dp)
-                .background(color = Color.Red, RoundedCornerShape(25.dp))
-                .clip(RoundedCornerShape(25.dp)) // Coins arrondis
-            ) {
-                CustomButton(type = DishType.DESSERT, menu)
-        }
-            Text("Contact : 07.83.05.69.34", fontFamily =  mamamia, modifier = Modifier.padding(top = 40.dp), style = TextStyle(fontSize = 25.sp, fontStyle = FontStyle.Italic, color = divColor))
-            Text("Mail : notyourbuisness@gmail.com", fontFamily =  mamamia, modifier = Modifier.padding(top = 10.dp), style = TextStyle(fontSize = 20.sp, fontStyle = FontStyle.Italic, color = divColor))
+            Text(
+                "Benvenuto chez",
+                fontFamily = mamamia,
+                modifier = Modifier.padding(top = 25.dp),
+                style = TextStyle(fontSize = 30.sp, fontStyle = FontStyle.Italic, color = Color.Red)
+            )
+            Image(
+                painter = painterResource(id = R.drawable.icon),
+                contentDescription = "Logo",
+                modifier = Modifier.size(200.dp)
+            )
+            Column(
+                verticalArrangement = Arrangement.Center,
 
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .size(width = 150.dp, height = 50.dp)
+                        .background(color = Color.Red, RoundedCornerShape(25.dp))
+                        .clip(RoundedCornerShape(25.dp)) // Coins arrondis
+                ) {
+                    CustomButton(type = DishType.STARTER, menu)
+                }
+                Divider(
+                    color = divColor,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 40.dp), // Remplir toute la largeur avec un padding horizontal
+                    thickness = 3.dp
+                )  // Changement de la couleur du séparateur en rouge
+                Box(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .size(width = 150.dp, height = 50.dp)
+                        .background(color = Color.Red, RoundedCornerShape(25.dp))
+                        .clip(RoundedCornerShape(25.dp)) // Coins arrondis
+                ) {
+                    CustomButton(type = DishType.MAIN, menu)
+                }
+                Divider(
+                    color = divColor,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 40.dp), // Remplir toute la largeur avec un padding horizontal
+                    thickness = 3.dp
+                ) // Changement de la couleur du séparateur en rouge
+                Box(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .size(width = 150.dp, height = 50.dp)
+                        .background(color = Color.Red, RoundedCornerShape(25.dp))
+                        .clip(RoundedCornerShape(25.dp)) // Coins arrondis
+                ) {
+                    CustomButton(type = DishType.DESSERT, menu)
+                }
+                Text(
+                    "Contact : 07.83.05.69.34",
+                    fontFamily = mamamia,
+                    modifier = Modifier.padding(top = 40.dp),
+                    style = TextStyle(
+                        fontSize = 25.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = divColor
+                    )
+                )
+                Text(
+                    "Mail : notyourbuisness@gmail.com",
+                    fontFamily = mamamia,
+                    modifier = Modifier.padding(top = 10.dp),
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = divColor
+                    )
+                )
+
+            }
         }
     }
+
 }
 
 
@@ -136,10 +177,11 @@ fun MenuView(menu: MenuInterface) {
 fun CustomButton(type: DishType, menu: MenuInterface) {
     TextButton(
         onClick = { menu.dishPressed(type) },
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(color = Color.Transparent)
     ) {
-        Text(type.title(), fontFamily =  mamamia, style = TextStyle( fontSize= 36.sp), color = Color.White, textAlign = TextAlign.Center,  modifier = Modifier.fillMaxSize()  // Aligner le texte au centre
+        Text(type.title(), fontFamily =  mamamia, style = TextStyle( fontSize= 17.sp), color = Color.White, textAlign = TextAlign.Center,  modifier = Modifier.fillMaxSize()  // Aligner le texte au centre
         ) // Changement de la couleur du texte en vert et en italique
     }
  }
